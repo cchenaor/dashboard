@@ -2,9 +2,12 @@
 
 import { BarChart3, Package, ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 interface AppSidebarProps {
   isCollapsed: boolean
+  onVentasClick: () => void
+  onDashboardClick: () => void
 }
 
 const navigationItems = [
@@ -25,7 +28,7 @@ const navigationItems = [
   },
 ]
 
-export function AppSidebar({ isCollapsed }: AppSidebarProps) {
+export function AppSidebar({ isCollapsed, onDashboardClick, onVentasClick }: AppSidebarProps) {
   return (
     <div className="h-full bg-white border-r border-gray-200 flex flex-col">
       {/* Header */}
@@ -50,16 +53,23 @@ export function AppSidebar({ isCollapsed }: AppSidebarProps) {
             <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3">Navegación</p>
           )}
           {navigationItems.map((item) => (
-            <Button
-              key={item.title}
-              variant={item.isActive ? "default" : "ghost"}
-              className={`w-full justify-start gap-3 ${isCollapsed ? "px-2" : "px-3"} ${
-                item.isActive ? "bg-blue-600 text-white hover:bg-blue-700" : "text-gray-700 hover:bg-gray-100"
-              }`}
-            >
-              <item.icon className="h-4 w-4 flex-shrink-0" />
-              {!isCollapsed && <span>{item.title}</span>}
-            </Button>
+            <Link
+                key={item.title}
+                href={
+                item.title === "Dashboard"
+                    ? "/" // página principal
+                    : item.title === "Ventas"
+                    ? "/ventas" // página de ventas
+                    : "#"
+                 }
+                className={`flex items-center w-full px-4 py-2 rounded hover:bg-gray-200 transition ${
+                item.isActive ? "bg-gray-200 font-medium" : ""
+                }`}
+                    >
+                <item.icon className="mr-2 h-4 w-4" />
+                    <span>{item.title}</span>
+            </Link>
+            
           ))}
         </div>
       </nav>
