@@ -40,7 +40,7 @@ export function SalesPanelFixed() {
       {/* Layout principal */}
       <div className="flex h-screen">
         {/* Contenido principal - Con margen izquierdo para la sidebar */}
-        <div className="flex-1 lg:ml-64">
+        <div className="flex-1">
           {/* Header del contenido principal */}
           <header className="flex h-16 items-center gap-4 border-b bg-background px-4 lg:px-6">
             {/* Botón de menú móvil */}
