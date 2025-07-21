@@ -87,7 +87,7 @@ export default function InventoryDashboard() {
       return <Badge variant="destructive">Agotado</Badge>
     }
     if (status === "En camino") {
-      return <Badge variant="secondary">En camino</Badge>
+      return <Badge variant="secondary">En camno</Badge>
     }
     if (availableQuantity <= 3) {
       return (
